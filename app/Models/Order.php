@@ -15,8 +15,23 @@ class Order extends Model
         'customer_name'
     ];
 
+    protected $appends = ['total'];
+
     public function linesOrder(): HasMany
     {
         return $this->hasMany(OrderLine::class);
+    }
+
+    public function getTotalAttribute($value)
+    {
+        $lines = $this->linesOrder;
+        return  $lines->sum(function ($line) {
+            return $line->subtotal;
+        });;
+    }
+
+    public function setTotalAttribute($value)
+    {
+        $this->attributes['total'] = $value;
     }
 }
