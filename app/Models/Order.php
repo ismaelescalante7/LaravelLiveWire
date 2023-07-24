@@ -1,28 +1,25 @@
-<?php 
+<?php
 
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Order extends Model
 {
-	use HasFactory;
-	
-    public $timestamps = true;
+    use HasFactory;
 
-    protected $table = 'orders';
+    protected $fillable = [
+        'order_ref',
+        'customer_name'
+    ];
 
     protected $appends = ['total'];
 
-    protected $fillable = ['order_ref','customer_name'];
-	
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function ordersLines()
+    public function linesOrder(): HasMany
     {
-        return $this->hasMany('App\Models\OrdersLine', 'order_id', 'id');
+        return $this->hasMany(OrderLine::class);
     }
 
     public function getTotalAttribute($value)
