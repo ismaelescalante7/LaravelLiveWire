@@ -24,7 +24,7 @@ class OrderLine extends Model
     {
         return $this->belongsTo(Product::class);
     }
-
+    ## OrderLine::create('order_id' => 1, 'product_id' => 1 , 'qty' => 7)
     public function order(): BelongsTo
     {
         return $this->belongsTo(Order::class);
