@@ -1,6 +1,6 @@
 # Test
 
-Breve descripción de tu proyecto.
+Crud sencillo en livewire.
 
 ## Requisitos
 
@@ -16,7 +16,7 @@ Breve descripción de tu proyecto.
 4. Ejecuta `composer install` para instalar las dependencias de PHP.
 5. Ejecuta `npm install` para instalar las dependencias de Node.js (si es necesario).
 6. Ejecuta `php artisan key:generate` para generar una clave de aplicación.
-7. Ejecuta `php artisan migrate --seed` para ejecutar las migraciones de la base de datos.
+7. Ejecuta `php artisan migrate:fresh --seed` para ejecutar las migraciones de la base de datos.
 8. Ejecuta `php artisan serve` para iniciar el servidor de desarrollo.
 
 ## User
