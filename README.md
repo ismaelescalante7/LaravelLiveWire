@@ -14,7 +14,7 @@ Crud sencillo en livewire.
 3. Copia el archivo `.env.example` a `.env` y configura las variables de entorno, incluyendo la conexión a la base de datos.
 4. Ejecuta `composer install` para instalar las dependencias de PHP.
 5. Ejecuta `php artisan key:generate` para generar una clave de aplicación.
-6. Ejecuta `php artisan migrate:fresh --seed` para ejecutar las migraciones de la base de datos.
+6. Ejecuta `php artisan migrate:fresh --seed` para ejecutar las migraciones y correr los seeders de la base de datos.
 7. Ejecuta `php artisan serve` para iniciar el servidor de desarrollo.
 
 ## Loguear con usuario
