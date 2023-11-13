@@ -13,6 +13,4 @@ class Product extends Model
         'name',
         'cost'
     ];
-
-    protected $appends = ['total'];
 }
