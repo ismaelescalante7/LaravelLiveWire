@@ -33,6 +33,7 @@ class OrderLine extends Model
     public function getSubtotalAttribute()
     {
         $this->load('product');
-        return $this->qty * $this->product['cost'];
+        $subtotal = $this->qty * $this->product['cost'];
+        return round($subtotal, 2);
     }
 }

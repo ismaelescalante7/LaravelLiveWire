@@ -35,6 +35,6 @@ class costTotalOrder implements ShouldQueue
         $total = $orders->sum(function ($order) {
             return $order->total;
         });
-        var_dump($total);   
+        var_dump(round($total, 2));   
     }
 }

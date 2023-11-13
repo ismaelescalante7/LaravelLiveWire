@@ -11,7 +11,7 @@ class Orders extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $order_ref, $customer_name;
+    public $selected_id, $keyWord, $order_ref, $customer_name, $orderLines = [], $total;
     public $updateMode = false;
 
     public function render()
@@ -45,8 +45,8 @@ class Orders extends Component
         ]);
 
         Order::create([ 
-			'order_ref' => $this-> order_ref,
-			'customer_name' => $this-> customer_name
+			'order_ref' => $this->order_ref,
+			'customer_name' => $this->customer_name
         ]);
         
         $this->resetInput();
@@ -59,10 +59,21 @@ class Orders extends Component
         $record = Order::findOrFail($id);
 
         $this->selected_id = $id; 
-		$this->order_ref = $record-> order_ref;
-		$this->customer_name = $record-> customer_name;
+		$this->order_ref = $record->order_ref;
+		$this->customer_name = $record->customer_name;
 		
         $this->updateMode = true;
+    }
+
+    public function show($id) {
+        $record = Order::findOrFail($id);
+
+        $this->selected_id = $id; 
+		$this->order_ref = $record->order_ref;
+		$this->customer_name = $record->customer_name;
+
+        $this->orderLines = $record->linesOrder()->with('product')->get();
+        $this->total = $record->total;
     }
 
     public function update()
@@ -75,8 +86,8 @@ class Orders extends Component
         if ($this->selected_id) {
 			$record = Order::find($this->selected_id);
             $record->update([ 
-			'order_ref' => $this-> order_ref,
-			'customer_name' => $this-> customer_name
+			'order_ref' => $this->order_ref,
+			'customer_name' => $this->customer_name
             ]);
 
             $this->resetInput();

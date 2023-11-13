@@ -9,6 +9,9 @@
 							<h4><i class="fab fa-laravel text-info"></i>
 							Order Listing </h4>
 						</div>
+						<div >
+							<code><h5> </h5></code>
+						</div>
 						<div wire:poll.60s>
 							<code><h5>{{ now()->format('H:i:s') }} UTC</h5></code>
 						</div>
@@ -27,6 +30,7 @@
 				<div class="card-body">
 						@include('livewire.orders.create')
 						@include('livewire.orders.update')
+						@include('livewire.orders.show')
 				<div class="table-responsive">
 					<table class="table table-bordered table-sm">
 						<thead class="thead">
@@ -51,7 +55,8 @@
 									Actions
 									</button>
 									<div class="dropdown-menu dropdown-menu-right">
-									<a data-toggle="modal" data-target="#updateModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Edit </a>							 
+									<a data-toggle="modal" data-target="#updateModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Edit </a>		
+									<a data-toggle="modal" data-target="#showModal" class="dropdown-item" wire:click="show({{$row->id}})"><i class="fa fa-eye"></i> Show </a>						 
 									{{-- <a class="dropdown-item" onclick="confirm('Confirm Delete Order id {{$row->id}}? \nDeleted Orders cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Delete </a>  --}}  
 									</div>
 								</div>

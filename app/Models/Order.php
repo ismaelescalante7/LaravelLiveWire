@@ -25,9 +25,10 @@ class Order extends Model
     public function getTotalAttribute($value)
     {
         $lines = $this->linesOrder;
-        return  $lines->sum(function ($line) {
+        $total =  $lines->sum(function ($line) {
             return $line->subtotal;
-        });;
+        });
+        return round($total, 2);
     }
 
     public function setTotalAttribute($value)
